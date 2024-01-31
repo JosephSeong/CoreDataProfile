@@ -34,8 +34,7 @@ class HomeViewController: UIViewController {
         // 버튼 레이아웃 설정
         profileBtn.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(profileBtn)
-
-        view.addSubview(profileBtn)
+        
         profileBtn.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-240)

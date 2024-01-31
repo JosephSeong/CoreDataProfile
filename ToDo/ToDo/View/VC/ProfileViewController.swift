@@ -12,7 +12,6 @@ class ProfileViewController: UIViewController {
 
     private let viewModel = ProfileViewModel()
 
-    //
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center

@@ -26,6 +26,7 @@
 		7C4326762B3529520056F322 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4326752B3529520056F322 /* Todo.swift */; };
 		7C5BE3172B47F54500E8FE9D /* Strike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5BE3162B47F54500E8FE9D /* Strike.swift */; };
 		7C5BE3192B47F57200E8FE9D /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5BE3182B47F57200E8FE9D /* TodoTableViewCell.swift */; };
+		7CFDEDC32B6A5872009531E5 /* UserModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7CFDEDC12B6A5872009531E5 /* UserModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		7C4326752B3529520056F322 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		7C5BE3162B47F54500E8FE9D /* Strike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strike.swift; sourceTree = "<group>"; };
 		7C5BE3182B47F57200E8FE9D /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
+		7CFDEDC22B6A5872009531E5 /* UserModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				7C4326672B3292150056F322 /* Assets.xcassets */,
 				7C4326692B3292150056F322 /* LaunchScreen.storyboard */,
 				7C43266C2B3292150056F322 /* Info.plist */,
+				7CFDEDC12B6A5872009531E5 /* UserModel.xcdatamodeld */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				7C5BE3172B47F54500E8FE9D /* Strike.swift in Sources */,
 				7C029B7D2B512D6800825229 /* RandomViewController.swift in Sources */,
 				7C0525CF2B6747A90009563A /* ProfileDesignViewController.swift in Sources */,
+				7CFDEDC32B6A5872009531E5 /* UserModel.xcdatamodeld in Sources */,
 				7C43265F2B3292140056F322 /* AppDelegate.swift in Sources */,
 				7C0525DD2B69E5AD0009563A /* ProfileViewModel.swift in Sources */,
 				7C0525D82B69DD850009563A /* ProfileViewController.swift in Sources */,
@@ -492,6 +496,19 @@
 			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		7CFDEDC12B6A5872009531E5 /* UserModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				7CFDEDC22B6A5872009531E5 /* UserModel.xcdatamodel */,
+			);
+			currentVersion = 7CFDEDC22B6A5872009531E5 /* UserModel.xcdatamodel */;
+			path = UserModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 7C4326532B3292140056F322 /* Project object */;
 }
