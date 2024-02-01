@@ -1,9 +1,9 @@
 # CoreDataProfile
 
 
-|차이점|UserDefaults|<span style="color:red">CoreData</span>|
+|차이점|UserDefaults|**CoreData**|
 |------|---|---|
-|용도 및 활용|<span style="color:red">CoreData</span>||
+|용도 및 활용|||
 |데이터 저장 방식|테스트2|테스트3|
 |성능 및 용량|테스트2|테스트3|
 |검색 및 쿼리 기능|테스트2|테스트3|
