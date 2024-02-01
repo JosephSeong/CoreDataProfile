@@ -26,6 +26,7 @@ class ProfileViewController: UIViewController {
         return label
     }()
 
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -33,6 +34,7 @@ class ProfileViewController: UIViewController {
         fetchUserProfile()
     }
 
+    // MARK: - UI Setup
     private func setupUI() {
         view.addSubview(nameLabel)
         view.addSubview(ageLabel)
