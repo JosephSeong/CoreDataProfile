@@ -10,26 +10,7 @@ import SnapKit
 
 class ProfileDesignViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = UIColor.white
-
-        setupUI()
-        setupConstraints()
-
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: cellIdentifier)
-
-        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            let spacing: CGFloat = 2
-            let itemSize = (view.bounds.width - 2 * spacing) / 3
-            layout.itemSize = CGSize(width: itemSize, height: itemSize)
-            layout.minimumLineSpacing = spacing
-            layout.minimumInteritemSpacing = spacing
-        }
-    }
+    private let cellIdentifier = "PhotoCell"
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -214,20 +195,35 @@ class ProfileDesignViewController: UIViewController, UICollectionViewDelegate, U
         return button
     }()
 
-    private let cellIdentifier = "PhotoCell"
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
+        view.backgroundColor = UIColor.white
+
+        setupUI()
+        setupConstraint()
+
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: cellIdentifier)
+
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            let spacing: CGFloat = 2
+            let itemSize = (view.bounds.width - 2 * spacing) / 3
+            layout.itemSize = CGSize(width: itemSize, height: itemSize)
+            layout.minimumLineSpacing = spacing
+            layout.minimumInteritemSpacing = spacing
+        }
+    }
+
+    // MARK: - UI Setup
     private func setupUI() {
         view.addSubview(titleLabel)
         view.addSubview(menuBtn)
         view.addSubview(profileImage)
-//        view.addSubview(postNum)
-//        view.addSubview(postLabel)
         view.addSubview(postStackView)
-//        view.addSubview(followerNum)
-//        view.addSubview(followerLabel)
         view.addSubview(followerStackView)
-//        view.addSubview(followingNum)
-//        view.addSubview(followingLabel)
         view.addSubview(followingStackView)
         view.addSubview(infoStackView)
         view.addSubview(nameLabel)
@@ -242,7 +238,7 @@ class ProfileDesignViewController: UIViewController, UICollectionViewDelegate, U
         view.addSubview(profileBtn)
     }
 
-    private func setupConstraints() {
+    private func setupConstraint() {
         titleLabel.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(15)
@@ -324,7 +320,7 @@ class ProfileDesignViewController: UIViewController, UICollectionViewDelegate, U
         }
     }
 
-    // MARK: - UICollectionViewDataSource
+    // MARK: - CollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 9
     }

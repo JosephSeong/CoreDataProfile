@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class PhotoCell: UICollectionViewCell {
+
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill

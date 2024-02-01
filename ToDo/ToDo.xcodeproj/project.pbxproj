@@ -123,7 +123,6 @@
 				7C4326672B3292150056F322 /* Assets.xcassets */,
 				7C4326692B3292150056F322 /* LaunchScreen.storyboard */,
 				7C43266C2B3292150056F322 /* Info.plist */,
-				7CFDEDC12B6A5872009531E5 /* UserModel.xcdatamodeld */,
 			);
 			path = ToDo;
 			sourceTree = "<group>";
@@ -134,6 +133,7 @@
 				7C4326752B3529520056F322 /* Todo.swift */,
 				7C029B7E2B51315C00825229 /* Cat.swift */,
 				7C0525D92B69E5490009563A /* UserProfile.swift */,
+				7CFDEDC12B6A5872009531E5 /* UserModel.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
