@@ -328,7 +328,25 @@ class ProfileDesignViewController: UIViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PhotoCell
 
-        cell.imageView.image = UIImage(named: "picture")
+        switch indexPath.item {
+            case 0:
+                cell.imageView.image = UIImage(named: "picture0")
+            case 1:
+                cell.imageView.image = UIImage(named: "picture1")
+            case 2:
+                cell.imageView.image = UIImage(named: "picture2")
+            case 3:
+                cell.imageView.image = UIImage(named: "picture3")
+            case 4:
+                cell.imageView.image = UIImage(named: "picture4")
+            case 5:
+                cell.imageView.image = UIImage(named: "picture5")
+            case 6:
+                cell.imageView.image = UIImage(named: "picture6")
+            default:
+                break
+            }
+
         return cell
     }
 
