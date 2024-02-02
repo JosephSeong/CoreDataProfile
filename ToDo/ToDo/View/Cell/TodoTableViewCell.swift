@@ -37,18 +37,21 @@ class TodoTableViewCell: UITableViewCell {
         print(#function)
     }
 
-    func setTask(_ _todo: Todo) {
-        todo = _todo
-        guard let todo else { return }
-        if todo.isCompleted {
+    func setTask(_ task: CoreTodo) {
+        guard let title = task.title else { return }
+        //todo = Todo(id: Int(task.id), title: title, isCompleted: task.isCompleted)
+
+        if task.isCompleted {
             textLabel?.text = nil
-            textLabel?.attributedText = todo.title.strikeThrough()
+            textLabel?.attributedText = title.strikeThrough()
         } else {
             textLabel?.attributedText = nil
-            textLabel?.text = todo.title
+            textLabel?.text = title
         }
-        doneSwitch.isOn = todo.isCompleted
+
+        doneSwitch.isOn = task.isCompleted
     }
+
 
 
 

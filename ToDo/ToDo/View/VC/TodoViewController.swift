@@ -10,8 +10,9 @@ import CoreData
 
 class TodoViewController: UIViewController {
 
-    //var todos: [Todo] = []
     var categoryWithTasks: [CategoryWithTask] = []
+    //var tasks: [Task] = []
+
 
     @IBOutlet weak var TodoTable: UITableView!
 
@@ -80,28 +81,50 @@ class TodoViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
 
-    // UserDefaults에 Todos 저장
+    // save
     func saveTodo() {
-        let encoder = JSONEncoder()
-        if let encodedData = try? encoder.encode(categoryWithTasks) {
-            UserDefaults.standard.set(encodedData, forKey: "todos")
-            print("userdefaults에 데이터 저장")
-        } else {
-            print("저장 실패")
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        for categoryWithTask in categoryWithTasks {
+            for task in categoryWithTask.tasks {
+                let taskData = CoreTodo(context: context)
+                taskData.id = UUID()
+                taskData.title = task.title
+                taskData.createDate = Date()
+                taskData.modifyDate = Date()
+                taskData.isCompleted = task.isCompleted
+                //taskData.category = categoryWithTask.category
+            }
         }
+
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
 
-
-    // UserDefaults에서 Todos 불러오기
+    // load
     func loadTodo() {
-        if let savedData = UserDefaults.standard.data(forKey: "todos"),
-           // 가져온 데이터를 CategoryWithTasks 객체의 배열로 디코딩(실패하면 nil)
-           let loadedCategoryWithTasks = try? JSONDecoder().decode([CategoryWithTask].self, from: savedData) {
-            // 디코딩된 할 일 목록을 현재의 categoryWithTasks 배열에 할당
-            categoryWithTasks = loadedCategoryWithTasks
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        do {
+            let tasks = try context.fetch(CoreTodo.fetchRequest()) as! [CoreTodo]
+
+            var convertedTasks: [CategoryWithTask] = []
+
+//            for task in tasks {
+//                if let existingCategoryIndex = convertedTasks.firstIndex(where: { $0.category == task.category }) {
+//                    convertedTasks[existingCategoryIndex].tasks.append(Todo(id: Int(task.id), title: task.title ?? "", isCompleted: task.isCompleted))
+//                } else {
+//                    let newCategoryWithTasks = CategoryWithTask(category: task.category ?? "", tasks: [Todo(id: Int(task.id), title: task.title ?? "", isCompleted: task.isCompleted)])
+//                    convertedTasks.append(newCategoryWithTasks)
+//                }
+//            }
+
+            categoryWithTasks = convertedTasks
+        } catch {
+            print("Error fetching tasks: \(error)")
         }
     }
 }
+
 
 
 // MARK: - extension
@@ -127,7 +150,7 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Todocell", for: indexPath) as! TodoTableViewCell
         let task = categoryWithTasks[indexPath.section].tasks[indexPath.row]
         cell.todoViewController = self // TodoViewController에 대한 참조 설정
-        cell.setTask(task)
+        //cell.setTask(task)
 
         return cell
     }
@@ -192,36 +215,5 @@ extension TodoViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
-
-    // MARK: - 카테고리 수정
-    // 섹션 헤더 탭 시 카테고리 수정
-//    func tableView(_ tableView: UITableView, didSelectHeaderInSection section: Int) {
-//        let currentCategory = categoryWithTasks[section].category
-//
-//        var categoryTextField = UITextField()
-//
-//        let categoryAlert = UIAlertController(title: "카테고리 수정", message: "새로운 카테고리 이름을 입력하세요.", preferredStyle: .alert)
-//        categoryAlert.addTextField { (textField) in
-//            categoryTextField = textField
-//            categoryTextField.placeholder = "새로운 카테고리"
-//            categoryTextField.text = currentCategory
-//        }
-//        let categorySave = UIAlertAction(title: "확인", style: .default) { (action) in
-//            guard let newCategory = categoryTextField.text, !newCategory.isEmpty else { return }
-//
-//            // 카테고리 이름 업데이트 및 테이블 뷰 리로드
-//            self.categoryWithTasks[section].category = newCategory
-//            self.TodoTable.reloadSections(IndexSet(integer: section), with: .automatic)
-//
-//            // 업데이트된 카테고리를 UserDefaults에 저장
-//            self.saveTodo()
-//        }
-//        categoryAlert.addAction(categorySave)
-//
-//        present(categoryAlert, animated: true, completion: nil)
-//
-//        // 헤더 터치 시 선택 상태 취소
-//        tableView.deselectRow(at: IndexPath(row: 0, section: section), animated: true)
-//    }
 }
 
